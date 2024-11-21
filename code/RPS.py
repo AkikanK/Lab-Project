@@ -12,7 +12,7 @@ class Game:
 
     def gameplay(self, p1:int, p2:int):
         print(f"Player chose: {choices[p1]}")
-        t.sleep(3)
+        t.sleep(2)
         print(f"Computer chose: {choices[p2]}") 
         t.sleep(1)
         print("Result:")
