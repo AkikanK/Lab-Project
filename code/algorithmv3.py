@@ -6,20 +6,19 @@ c = [[0, 1, 2],[1, 2, 0], [2, 0, 1]]
 win = {0: 2, 1 : 0, 2 : 1}
 propb_table = np.array([[0.33, 0.33, 0.33], [0.33, 0.33, 0.33], [0.33, 0.33, 0.33]])
 
-class Mark2:
+class Mark3_nodepth1:
 
     def __init__(self):
         self.past_plays = []
         self.cplay = int
         self.current = int
         self.result = 0
-        self.doubles = {}
         self.triples = {}
         self.fours = {}
         self.fives = {}
         self.sixes = {}
         self.counter = 0
-        self.data = {"n1":0, "n2":0, "n3":0, "n4":0, "n5": 1}
+        self.data = {"n2":0, "n3":0, "n4":0, "n5": 1}
 
     def push(self, x):
         if len(self.past_plays) < 6:
@@ -40,12 +39,6 @@ class Mark2:
             return
         
     def past_propb(self): #Make a dictionary of past propabilities
-        if len(self.past_plays) >= 2:
-            if tuple(self.past_plays[-2:]) in self.doubles:
-                self.doubles[tuple(self.past_plays[-2:])] = self.doubles.get(tuple(self.past_plays[-2:])) + 1
-            else:
-                self.doubles[tuple(self.past_plays[-2:])] = 1
-
         if len(self.past_plays) >= 3:
             if tuple(self.past_plays[-3:]) in self.triples:
                 self.triples[tuple(self.past_plays[-3:])] = self.triples.get(tuple(self.past_plays[-3:])) + 1
@@ -70,7 +63,7 @@ class Mark2:
             else:
                 self.sixes[tuple(self.past_plays[-6:])] = 1
         
-        return self.doubles, self.triples, self.fours, self.fives, self.sixes
+        return self.triples, self.fours, self.fives, self.sixes
 
     def current_propb(self): #For now goes from longest to shortest, will add switch function later
         self.counter += 1
@@ -84,7 +77,6 @@ class Mark2:
                         self.test("n4",self.assess(4, self.past_plays, self.fives))
                         self.test("n3",self.assess(3, self.past_plays, self.fours))
                         self.test("n2",self.assess(2, self.past_plays, self.triples))
-                        self.test("n1",self.assess(1, self.past_plays, self.doubles))
                         return self.assess(5, self.past_plays, self.sixes)
                     
                 case "n4":
@@ -94,7 +86,6 @@ class Mark2:
                         self.test("n4",self.assess(4, self.past_plays, self.fives))
                         self.test("n3",self.assess(3, self.past_plays, self.fours))
                         self.test("n2",self.assess(2, self.past_plays, self.triples))
-                        self.test("n1",self.assess(1, self.past_plays, self.doubles))
                         return self.assess(4, self.past_plays, self.fives)
 
                 case "n3":
@@ -104,7 +95,6 @@ class Mark2:
                         self.test("n4",self.assess(4, self.past_plays, self.fives))
                         self.test("n3",self.assess(3, self.past_plays, self.fours))
                         self.test("n2",self.assess(2, self.past_plays, self.triples))
-                        self.test("n1",self.assess(1, self.past_plays, self.doubles))
                         return self.assess(3, self.past_plays, self.fours)
 
                 case "n2":
@@ -114,18 +104,7 @@ class Mark2:
                         self.test("n4",self.assess(4, self.past_plays, self.fives))
                         self.test("n3",self.assess(3, self.past_plays, self.fours))
                         self.test("n2",self.assess(2, self.past_plays, self.triples))
-                        self.test("n1",self.assess(1, self.past_plays, self.doubles))
                         return self.assess(2, self.past_plays, self.triples)
-
-                case "n1":
-                    if self.assess(1, self.past_plays, self.doubles) != None: #single depth
-                        print("One-depth!")
-                        self.test("n5",self.assess(5, self.past_plays, self.sixes))
-                        self.test("n4",self.assess(4, self.past_plays, self.fives))
-                        self.test("n3",self.assess(3, self.past_plays, self.fours))
-                        self.test("n2",self.assess(2, self.past_plays, self.triples))
-                        self.test("n1",self.assess(1, self.past_plays, self.doubles))
-                        return self.assess(1, self.past_plays, self.doubles)
 
         print("I'm just guessing!")
         return r.randint(0,2)
