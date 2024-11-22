@@ -2,7 +2,7 @@ import random as r
 import time as t
 import numpy as np
 from RPS import Game
-from algorithm import Mark1
+from algorithmv2 import Mark1
 
 pick = ["Rock", "Paper", "Scissors"]
     

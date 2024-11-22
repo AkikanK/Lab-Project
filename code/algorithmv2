@@ -24,16 +24,13 @@ class Mark1:
             self.past_plays.append(x)
 
     def past_propb(self): #Make a dictionary of past propabilities
-        if self.games == 4:
+        if len(self.past_plays) > 0:
             if tuple(self.past_plays) in self.predict:
                 self.predict[tuple(self.past_plays)] = self.predict.get(tuple(self.past_plays)) + 1
             else:
                 self.predict[tuple(self.past_plays)] = 1
-            self.games = 0
-            print(self.games)
             return self.predict
-        self.games += 1
-        return f"{self.games} games since updated prediction!"
+        return f"First round?"
 
     def current_propb(self): #Pick the best value by accessing the 'assess' function
         self.counter += 1
