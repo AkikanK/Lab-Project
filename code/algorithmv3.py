@@ -3,7 +3,7 @@ import numpy as np
 
 pick = ["Rock", "Paper", "Scissors"]
 c = [[0, 1, 2],[1, 2, 0], [2, 0, 1]]
-win = {0: 2, 1 : 0, 2 : 1}
+win = {0: 1, 1 : 2, 2 : 0}
 propb_table = np.array([[0.33, 0.33, 0.33], [0.33, 0.33, 0.33], [0.33, 0.33, 0.33]])
 
 class Mark3_nodepth1:
@@ -18,7 +18,7 @@ class Mark3_nodepth1:
         self.fives = {}
         self.sixes = {}
         self.counter = 0
-        self.data = {"n2":0, "n3":0, "n4":0, "n5": 1}
+        self.data = {"n5": 1, "n4":0, "n3":0, "n2":0}
 
     def push(self, x):
         if len(self.past_plays) < 6:
@@ -34,11 +34,13 @@ class Mark3_nodepth1:
             g.gameplay(self.past_plays[-1], guess)
             if g.result == -1:
                 self.data[which] = self.data.get(which) +1
+            if g.result == 1:
+                self.data[which] = self.data.get(which) -1.5
             return
         except TypeError:
             return
         
-    def past_propb(self): #Make a dictionary of past propabilities
+    def past_propb(self): #Makes a dictionary for each past move length (maybe should switch to one dictionary?)
         if len(self.past_plays) >= 3:
             if tuple(self.past_plays[-3:]) in self.triples:
                 self.triples[tuple(self.past_plays[-3:])] = self.triples.get(tuple(self.past_plays[-3:])) + 1

@@ -17,8 +17,8 @@ if __name__ == "__main__":
     while True:
         player = int(input("Rock (0), Paper (1), or Scissors (2)? \n"))
         M.push(player)
-        M.past_propb()
         computer = M.current_propb()
+        M.past_propb()
         M.current = computer
         print(f"Player chose: {pick[player]}")
         t.sleep(2)
@@ -27,3 +27,4 @@ if __name__ == "__main__":
         print("Result:")
         print(g.gameplay(player, computer))
         print(f"Current Score: Player: {g.pscore}, Computer: {g.cscore}, You've played {M.counter} rounds!")
+        print(M.data)
