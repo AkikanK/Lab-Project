@@ -2,9 +2,7 @@ import random as r
 import numpy as np
 
 pick = ["Rock", "Paper", "Scissors"]
-c = [[0, 1, 2],[1, 2, 0], [2, 0, 1]]
-win = {0: 1, 1 : 2, 2 : 0}
-propb_table = np.array([[0.33, 0.33, 0.33], [0.33, 0.33, 0.33], [0.33, 0.33, 0.33]])
+win = {0: 1, 1 : 2, 2 : 0} #Used by the assess function to make a choice
 
 class Mark3_nodepth1:
 
@@ -18,7 +16,7 @@ class Mark3_nodepth1:
         self.fives = {}
         self.sixes = {}
         self.counter = 0
-        self.data = {"n5": 1, "n4":0, "n3":0, "n2":0}
+        self.data = {"n5": 1, "n4":0, "n3":0, "n2":0} #Keeps count of which depth-algorithm is currently the most efficient, and uses that one.
 
     def push(self, x):
         if len(self.past_plays) < 6:
@@ -27,7 +25,7 @@ class Mark3_nodepth1:
             self.past_plays.pop(0)
             self.past_plays.append(x)
 
-    def test(self, which: str, guess:int):
+    def test(self, which: str, guess:int): #Tests how an algorithm would have performed IF it was played, checked for each depth each time.
         from RPS import Game
         g = Game()
         try:
@@ -40,7 +38,7 @@ class Mark3_nodepth1:
         except TypeError:
             return
         
-    def past_propb(self): #Makes a dictionary for each past move length (maybe should switch to one dictionary?)
+    def past_propb(self): #Makes a dictionary for each past move length (maybe should switch to one dictionary?) (Different depths)
         if len(self.past_plays) >= 3:
             if tuple(self.past_plays[-3:]) in self.triples:
                 self.triples[tuple(self.past_plays[-3:])] = self.triples.get(tuple(self.past_plays[-3:])) + 1
@@ -74,7 +72,7 @@ class Mark3_nodepth1:
             match current:
                 case "n5":
                     if self.assess(5, self.past_plays, self.sixes) != None: #five depth
-                        print("Five-depth!")
+                        #print("Five-depth!")
                         self.test("n5",self.assess(5, self.past_plays, self.sixes))
                         self.test("n4",self.assess(4, self.past_plays, self.fives))
                         self.test("n3",self.assess(3, self.past_plays, self.fours))
@@ -83,7 +81,7 @@ class Mark3_nodepth1:
                     
                 case "n4":
                     if self.assess(4, self.past_plays, self.fives) != None: #four depth
-                        print("Four-depth!")
+                        #print("Four-depth!")
                         self.test("n5",self.assess(5, self.past_plays, self.sixes))
                         self.test("n4",self.assess(4, self.past_plays, self.fives))
                         self.test("n3",self.assess(3, self.past_plays, self.fours))
@@ -92,7 +90,7 @@ class Mark3_nodepth1:
 
                 case "n3":
                     if self.assess(3, self.past_plays, self.fours) != None: #three depth
-                        print("Three-depth!")
+                        #print("Three-depth!")
                         self.test("n5",self.assess(5, self.past_plays, self.sixes))
                         self.test("n4",self.assess(4, self.past_plays, self.fives))
                         self.test("n3",self.assess(3, self.past_plays, self.fours))
@@ -101,18 +99,18 @@ class Mark3_nodepth1:
 
                 case "n2":
                     if self.assess(2, self.past_plays, self.triples) != None: #twp depth
-                        print("Two-depth!")
+                        #print("Two-depth!")
                         self.test("n5",self.assess(5, self.past_plays, self.sixes))
                         self.test("n4",self.assess(4, self.past_plays, self.fives))
                         self.test("n3",self.assess(3, self.past_plays, self.fours))
                         self.test("n2",self.assess(2, self.past_plays, self.triples))
                         return self.assess(2, self.past_plays, self.triples)
 
-        print("I'm just guessing!")
-        return r.randint(0,2)
+        #print("I'm just guessing!")
+        return r.randint(0,2) #If no algorithm is able to make a guess, we play a random
     
 
-    def assess(self, p: int, t: list, d: dict): #p is depth, t is last plays, d is correct dictionary
+    def assess(self, p: int, t: list, d: dict): #p is depth, t is last plays, d is correct dictionary, it goues through the list up to t amount of plays, and then guesses move for t+1
         if len(t) <= p:
             return None
         base = t[-p:]
