@@ -1,0 +1,23 @@
+﻿Requirements for Running the Program: (26.11.2024)
+
+
+Note 1:
+The four-program files included are all codependent, and must all be stored in the same location.
+
+Note 2:
+The programs are written in python, and require Python-3.10.0 or newer to function as intended.
+
+Note 3:
+The following plugins must be installed:
+	
+	Numpy
+	Time (already comes packaged with python)
+	Random (already comes packaged with python)
+
+Note 4:
+For troubleshooting the plugins, ensure that especially Numpy as been updated, or if you do not have it then install it by, for example on linux opening the terminal and inserting the following code:
+
+	>> pip install numpy
+
+Note 5:
+This document will be updated if any of the requirements change, please let me know if you notice any errors and if I have neglected to update this document since last commit.
