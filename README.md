@@ -2,6 +2,7 @@
 **Basic Information:**
 My lab project is a five-level Markov Chain algorithm to compete against human-players in a game of Rock-Paper-Scissors.
 It is an experimental algorithm based on this research paper: https://arxiv.org/pdf/2003.06769. It uses a dictionary and the basic theory of Markov Chains as its core.
+!SEE NOTES REGARDING THE ADDITION OF A NEW VERSION OF THE ALGORITHM!
 
 
 **Getting Started:**
@@ -30,6 +31,7 @@ The code will run and return the wins and losses of the random number generator 
 
 **Notes:**
 
+After feedback from Week 4, I have created two versions of the algorithm (v3 and v4), you can read about the differences in the test documents, or by seeing the code. You can switch between the two algorithms (function the exact same way) by choosing between them in the imports.
 As Rock-Paper-Scissors is still based on making (educated) guesses, and humans can be unpredictable, the algorithm may play terribly in one game,
 and then be unbeatable in another. The algorithm does not measure your level of ability within the game, but is simply programmed to make educated guesses.
 From personal experience, I would recommend to play at least a few games of 50 rounds to develop a full view of the accuracy of the algorithm.
