@@ -29,3 +29,4 @@ if __name__ == "__main__": #Main gameplay loop
         print("Result:")
         print(g.gameplay(player, computer)) #Actual gameplay
         print(f"Current Score: Player: {g.pscore}, Computer: {g.cscore}, You've played {M.counter} rounds! \n")
+        print(M.data)
