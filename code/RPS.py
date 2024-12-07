@@ -1,9 +1,7 @@
 import random as r
 import time as t
-from algorithmv2 import Mark2
 
 choices = ["Rock", "Paper", "Scissors"]
-M = Mark2()
 wins = 0
 
 
@@ -43,6 +41,8 @@ class Game:
                     return f"Win! {choices[p1]} beats {choices[p2]}!"
                 else:
                     return "Tie!"
+            case _:
+                None
 
     def score(self,add:int): #Updates the result and win counter
         if add == 1:
