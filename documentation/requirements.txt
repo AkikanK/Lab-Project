@@ -11,6 +11,7 @@ Note 3:
 The following plugins must be installed:
 	
 	Numpy
+	TKinter
 	Time (already comes packaged with python)
 	Random (already comes packaged with python)
 
@@ -18,6 +19,7 @@ Note 4:
 For troubleshooting the plugins, ensure that especially Numpy as been updated, or if you do not have it then install it by, for example on linux opening the terminal and inserting the following code:
 
 	>> pip install numpy
+	>> pip install tk
 
 Note 5:
 This document will be updated if any of the requirements change, please let me know if you notice any errors and if I have neglected to update this document since last commit.
