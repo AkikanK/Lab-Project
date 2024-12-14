@@ -1,9 +1,5 @@
-import random as r
-import time as t
-
 choices = ["Rock", "Paper", "Scissors"]
 wins = 0
-
 
 class Game:
 

@@ -1,6 +1,4 @@
 from tkinter import *
-import time as t
-import numpy as np
 from algorithmv3 import Mark3_nodepth1
 from RPS import Game
 

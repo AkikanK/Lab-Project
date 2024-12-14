@@ -1,5 +1,4 @@
 import random as r
-import numpy as np
 
 pick = ["Rock", "Paper", "Scissors"]
 win = {0: 1, 1: 2, 2: 0}  # Used by the assess function to make a choice

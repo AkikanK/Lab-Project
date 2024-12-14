@@ -1,6 +1,5 @@
 import random as r
 import time as t
-import numpy as np
 from algorithmv3 import Mark3_nodepth1
 from algorithmv4 import Mark4_nodepth1
 from RPS import Game
