@@ -1,5 +1,4 @@
 from tkinter import *
-import random
 import time as t
 import numpy as np
 from algorithmv3 import Mark3_nodepth1
@@ -48,12 +47,12 @@ def isrock():
     if c_v == 0:
         match_result = "Match Draw"
     elif c_v == 2:
-        match_result = f"Player Win, Wins: {g.pscore}, Losses: {g.cscore}"
+        match_result = f"Player Win, Wins: {g.pscore}, Losses: {g.cscore} \n Rounds Played: {g.rounds}"
     else:
-        match_result = f"Computer Win, Wins: {g.pscore}, Losses: {g.cscore}"
-    l4.config(text=match_result)
+        match_result = f"Computer Win, Wins: {g.pscore}, Losses: {g.cscore} \n Rounds Played: {g.rounds}"
     l1.config(text="Rock            ")
     l3.config(text=choices.get(c_v))
+    l4.config(text=match_result)
     M.push(player)
     M.past_propb()
     button_disable()
@@ -69,12 +68,12 @@ def ispaper():
     if c_v == 1:
         match_result = "Match Draw"
     elif c_v == 2:
-        match_result = f"Computer Win, Wins: {g.pscore}, Losses: {g.cscore}"
+        match_result = f"Computer Win, Wins: {g.pscore}, Losses: {g.cscore} \n Rounds Played: {g.rounds}"
     else:
-        match_result = f"Player Win, Wins: {g.pscore}, Losses: {g.cscore}"
-    l4.config(text=match_result)
+        match_result = f"Player Win, Wins: {g.pscore}, Losses: {g.cscore} \n Rounds Played: {g.rounds}"
     l1.config(text="Paper           ")
     l3.config(text=choices.get(c_v))
+    l4.config(text=match_result)
     M.push(player)
     M.past_propb()
     button_disable()
@@ -88,14 +87,14 @@ def isscissor():
     M.current = c_v
     g.gameplay(player, c_v)
     if c_v == 0:
-        match_result = f"Computer Win, Wins: {g.pscore}, Losses: {g.cscore}"
+        match_result = f"Computer Win, Wins: {g.pscore}, Losses: {g.cscore} \n Rounds Played: {g.rounds}"
     elif c_v == 2:
         match_result = "Match Draw"
     else:
-        match_result = f"Player Win, Wins: {g.pscore}, Losses: {g.cscore}"
-    l4.config(text=match_result)
+        match_result = f"Player Win, Wins: {g.pscore}, Losses: {g.cscore} \n Rounds Played: {g.rounds}"
     l1.config(text="Scissor         ")
     l3.config(text=choices.get(c_v))
+    l4.config(text=match_result)
     M.push(player)
     M.past_propb()
     button_disable()

@@ -11,8 +11,10 @@ class Game:
         self.result = 0 #Needed for the algorithm
         self.pscore = 0 #Counts Player wins
         self.cscore = 0 #Counts algorithm wins
+        self.rounds = 0 #To count rounds for the UI
 
     def gameplay(self, p1:int, p2:int):
+        self.rounds += 1
         match p1:
             case 0: #player chose Rock
                 if p2 == 1:
